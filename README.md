@@ -46,6 +46,104 @@ Propose API testing testing approach for [NASA Sound API](https://api.nasa.gov/a
  * [ ] Load testing
    * [ ] Response time (what is the specification?)
 
+#### Standard behavior
+Testing if the expected inputs returns expected outputs.
+
+##### Consistency
+Check if two requests with identical query returns same result.
+
+Check if two requests with different API key (but same q and limit) return same result.
+
+##### Search behavior
+Test if search behaves as expected. There is no documentation about how the search should work so I cannot check if the result is correct. But it could be implemented for example that way that searched query is in sound's description or in tags.
+
+##### Limit is working
+Test if `limit` argument is working as expected. When no argument is passed there should be 10 results by default, when argument is passed there should be that many results.
+
+##### API response structure
+Test if returned JSON has correct structure. There is no documentation in that field so I assume the example response has correct structure. Check if other responses has the same structure.
+
+##### API key working correctly
+Test if API key is working correctly. There should be limit 1000 requests per hour for one API key. Test if request 1001 returns correct response (not documented so I cannot check for sure). Difficult to test automatically (have to check to run the test just once per hour).
+
+#### Edge case behavior
+Test edge case, unexpected and extreme values.
+
+##### Search testing (`q` param)
+Test search ability for edge cases.
+
+Test `q` param with no value
+
+Test `q` param with various special characters
+
+Test `q` param with quote chars in it
+
+Test `q` param with eval (\`) in it
+
+Test `q` param with large values (10 000 characters)
+
+###### Limit testing (`limit` param)
+Test limit ability for edge cases
+
+Test `limit` param with no value
+
+Test `limit` param with value which is not number
+
+Test `limit` param with 0
+
+Test `limit` param with negative integer
+
+Test `limit` param with integer larger then max integer (2147483647)
+
+Test `limit` param with integer smaller then min integer (-2147483648)
+
+Test `limit` param with decimal number
+
+###### API key testing (`api_key` param)
+Test API key feature for edge cases
+
+Test `api_key` param with no value
+
+Test `api_key` param with randomly generated key
+
+Test `api_key` param with large values (10 000 characters)
+
+###### Unexpected parameter
+Test API for passing unexpected parameter
+
+Test parameter with string as value
+
+Test parameter with number as value
+
+Test parameter with no value
+
+#### Security testing
+Test API for security
+
+Test 403 Unauthorized response is returned to request without API key
+
+Test 403 Unauthorized response is returned to request with not valid API key
+
+Test all HTTP methods are not accessible except the GET method
+
+Test HTTP headers for security issues
+
+Test 4xx and 5xx responses returns correct responses (not stack trace or other sensitive information)
+ 
+#### Load testing
+Test API under stress conditions
+
+Test API standard response time
+
+TODO
+
+#### Good practices testing
+Test API for good practices
+
+Test if 4xx and 5xx responses returns JSON response
+
+Test if HEAD request is available
+
 ### Test approach
 Using Java with TestNG test framework
 
@@ -83,3 +181,6 @@ Using Java with TestNG test framework
 **Probable cause:** the DEBUG mode is turn on on production server
 
 **Possible fix:** turn off the DEBUG mode in production
+
+## Proposed improvements
+ * Error responses (4xx and 5xx) should return JSON instead of HTML
