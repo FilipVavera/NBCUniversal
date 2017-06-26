@@ -13,7 +13,7 @@ Propose API testing testing approach for [NASA Sound API](https://api.nasa.gov/a
    * Search behavior (missing documentation)
    * Limit is working
    * API response structure (missing documentation)
-   * API key working correctly (what is the purpose?)
+   * API key working correctly
  * Edge cases behavior
    * Search testing
      * Empty search query
