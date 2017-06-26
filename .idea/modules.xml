@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/nbcuniversal.iml" filepath="$PROJECT_DIR$/nbcuniversal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NBCUniversal.iml" filepath="$PROJECT_DIR$/NBCUniversal.iml" />
     </modules>
   </component>
 </project>
