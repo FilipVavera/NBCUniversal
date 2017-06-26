@@ -8,41 +8,43 @@ Propose API testing testing approach for [NASA Sound API](https://api.nasa.gov/a
 ## Solution
 
 **Test areas:**
- * Standard behavior
-   * Consistency
-   * Search behavior (missing documentation)
-   * Limit is working
-   * API response structure (missing documentation)
-   * API key working correctly
- * Edge cases behavior
-   * Search testing
-     * Empty search query
-     * Special characters
-     * Quote characters (", ')
-     * Eval character (`)
-     * Executable code in query
-     * Query extremely long (more then 2000 characters)
-   * Limit testing
-     * Empty limit
-     * Limit not a number
-     * Limit 0
-     * Limit negative integer
-     * Limit decimal number
-     * Limit bigger then max integer (2147483647)
-     * Limit lower then min integer (-2147483648)
-   * API key testing
-     * Empty API key
-     * Random API key
-     * API key extremely long (more then 2000 characters)
-   * Unexpected parameter
-     * ...
- * Security testing
-   * SSL certificate testing
-   * API key testing (what is his purpose?)
-   * Executable code in query
-   * ...
- * Load testing
-   * Response time (what is the specification?)
+ * [ ] Standard behavior
+   * [x] Consistency
+   * [ ] Search behavior (missing documentation)
+   * [x] Limit is working
+   * [ ] API response structure (missing documentation)
+   * [ ] API key working correctly
+ * [x] Edge cases behavior
+   * [x] Search testing
+     * [x] Empty search query
+     * [x] Special characters
+     * [x] Quote characters (", ')
+     * [x] Eval character (`)
+     * [x] Executable code in query
+     * [x] Query extremely long (more then 10000 characters)
+   * [x] Limit testing
+     * [x] Empty limit
+     * [x] Limit not a number
+     * [x] Limit 0
+     * [x] Limit negative integer
+     * [x] Limit decimal number
+     * [x] Limit bigger then max integer (2147483647)
+     * [x] Limit lower then min integer (-2147483648)
+   * [x] API key testing
+     * [x] Empty API key
+     * [x] Random API key
+     * [x] API key extremely long (more then 10000 characters)
+   * [x] Unexpected parameter
+     * [x] Unexpected parameter with string
+     * [x] Unexpected parameter with number
+     * [x] Unexpected empty parameter
+ * [ ] Security testing
+   * [ ] SSL certificate testing
+   * [ ] API key testing (what is his purpose?)
+   * [ ] Executable code in query
+   * [ ] ...
+ * [ ] Load testing
+   * [ ] Response time (what is the specification?)
 
 ### Test approach
 Using Java with TestNG test framework
