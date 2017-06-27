@@ -9,6 +9,7 @@ import com.profiq.filipvavera.nbcuniversal.Utils;
 
 
 public class Search {
+
     @Test(groups = {"standard", "search"})
     public void testSearchResults() {
         Map<String, String> query = new HashMap<>();

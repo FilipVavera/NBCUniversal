@@ -17,7 +17,7 @@ public class ApiKey {
         Map<String, String> query = new HashMap<>();
         query.put("api_key", "");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
     }
 
     @Test(groups = {"edge", "apiKey"})
@@ -25,7 +25,7 @@ public class ApiKey {
         Map<String, String> query = new HashMap<>();
         query.put("api_key", Utils.generateApiKey());
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
     }
 
     @Test(groups = {"edge", "apiKey"})
@@ -33,7 +33,7 @@ public class ApiKey {
         Map<String, String> query = new HashMap<>();
         query.put("api_key", Utils.generateApiKey(200));
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
     }
 
     @Test(groups = {"edge", "apiKey"})
@@ -41,7 +41,7 @@ public class ApiKey {
         Map<String, String> query = new HashMap<>();
         query.put("api_key", Utils.generateApiKey(2000));
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_FORBIDDEN);
     }
 
     @Test(groups = {"edge", "apiKey"})
@@ -49,6 +49,6 @@ public class ApiKey {
         Map<String, String> query = new HashMap<>();
         query.put("api_key", Utils.generateApiKey(10000));
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_REQ_TOO_LONG);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_REQ_TOO_LONG);
     }
 }

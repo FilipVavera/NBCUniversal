@@ -11,13 +11,14 @@ import org.testng.annotations.Test;
 import com.profiq.filipvavera.nbcuniversal.Utils;
 
 public class Search {
+
     @Test(groups = {"edge", "search"})
     public void emptySearchQuery() throws IOException {
         Map<String, String> query = new HashMap<>();
         query.put("api_key", Utils.apiKey);
         query.put("q", "");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "search"})
@@ -28,7 +29,7 @@ public class Search {
 
         // TODO (Filip Vavera): add more test cases
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "search"})
@@ -37,7 +38,7 @@ public class Search {
         query.put("api_key", Utils.apiKey);
         query.put("q", "aaa\'aaa\'aaa");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "search"})
@@ -46,7 +47,7 @@ public class Search {
         query.put("api_key", Utils.apiKey);
         query.put("q", "aaa\"aaa\"aaa");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "search"})
@@ -55,7 +56,7 @@ public class Search {
         query.put("api_key", Utils.apiKey);
         query.put("q", "aaa`aaa`aaa");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "search"})
@@ -64,7 +65,7 @@ public class Search {
         query.put("api_key", Utils.apiKey);
         query.put("q", Utils.repeat(500, "c"));
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "search"})
@@ -73,7 +74,7 @@ public class Search {
         query.put("api_key", Utils.apiKey);
         query.put("q", Utils.repeat(2500, "c"));
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "search"})
@@ -82,6 +83,6 @@ public class Search {
         query.put("api_key", Utils.apiKey);
         query.put("q", Utils.repeat(10000, "c"));
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_REQ_TOO_LONG);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_REQ_TOO_LONG);
     }
 }

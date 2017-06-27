@@ -82,7 +82,7 @@ Test `q` param with eval (\`) in it
 
 Test `q` param with large values (10 000 characters)
 
-###### Limit testing (`limit` param)
+##### Limit testing (`limit` param)
 Test limit ability for edge cases
 
 Test `limit` param with no value
@@ -99,7 +99,7 @@ Test `limit` param with integer smaller then min integer (-2147483648)
 
 Test `limit` param with decimal number
 
-###### API key testing (`api_key` param)
+##### API key testing (`api_key` param)
 Test API key feature for edge cases
 
 Test `api_key` param with no value
@@ -108,7 +108,7 @@ Test `api_key` param with randomly generated key
 
 Test `api_key` param with large values (10 000 characters)
 
-###### Unexpected parameter
+##### Unexpected parameter
 Test API for passing unexpected parameter
 
 Test parameter with string as value

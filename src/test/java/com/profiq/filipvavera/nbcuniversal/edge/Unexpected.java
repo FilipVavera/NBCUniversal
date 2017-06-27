@@ -19,7 +19,7 @@ public class Unexpected {
         query.put("api_key", Utils.apiKey);
         query.put("foo", "boo");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "unexpected"})
@@ -29,7 +29,7 @@ public class Unexpected {
         query.put("api_key", Utils.apiKey);
         query.put("foo", "10");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 
     @Test(groups = {"edge", "unexpected"})
@@ -39,6 +39,6 @@ public class Unexpected {
         query.put("api_key", Utils.apiKey);
         query.put("foo", "");
 
-        Assert.assertEquals(Utils.getSoundResponse(query).getResponseCode(), HttpURLConnection.HTTP_OK);
+        Assert.assertEquals(Utils.getSoundConnection(query).getResponseCode(), HttpURLConnection.HTTP_OK);
     }
 }
