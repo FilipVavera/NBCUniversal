@@ -1,22 +1,22 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
-    <option name="myName" value="Project Default" />
+    <option name="myName" value="Project Default"/>
     <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="groups">
         <value>
           <list size="12">
-            <item index="0" class="java.lang.String" itemvalue="api" />
-            <item index="1" class="java.lang.String" itemvalue="consistency" />
-            <item index="2" class="java.lang.String" itemvalue="standard" />
-            <item index="3" class="java.lang.String" itemvalue="edge" />
-            <item index="4" class="java.lang.String" itemvalue="search" />
-            <item index="5" class="java.lang.String" itemvalue="limit" />
-            <item index="6" class="java.lang.String" itemvalue="broken" />
-            <item index="7" class="java.lang.String" itemvalue="apiKey" />
-            <item index="8" class="java.lang.String" itemvalue="unexpected" />
-            <item index="9" class="java.lang.String" itemvalue="structure" />
-            <item index="10" class="java.lang.String" itemvalue="security" />
-            <item index="11" class="java.lang.String" itemvalue="httpMethods" />
+            <item index="0" class="java.lang.String" itemvalue="api"/>
+            <item index="1" class="java.lang.String" itemvalue="consistency"/>
+            <item index="2" class="java.lang.String" itemvalue="standard"/>
+            <item index="3" class="java.lang.String" itemvalue="edge"/>
+            <item index="4" class="java.lang.String" itemvalue="search"/>
+            <item index="5" class="java.lang.String" itemvalue="limit"/>
+            <item index="6" class="java.lang.String" itemvalue="broken"/>
+            <item index="7" class="java.lang.String" itemvalue="apiKey"/>
+            <item index="8" class="java.lang.String" itemvalue="unexpected"/>
+            <item index="9" class="java.lang.String" itemvalue="structure"/>
+            <item index="10" class="java.lang.String" itemvalue="security"/>
+            <item index="11" class="java.lang.String" itemvalue="httpMethods"/>
           </list>
         </value>
       </option>
