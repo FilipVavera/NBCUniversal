@@ -42,6 +42,21 @@ public class Utils {
     }
 
     /**
+     * Create HTTP connection to the given URL
+     *
+     * @param url endpoint to create connection
+     * @param method HTTP request method
+     * @return HttpURLConnection
+     * @throws IOException when URL cannot be parsed
+     */
+    private static HttpURLConnection connection(final String url, final String method) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.setRequestMethod(method);
+
+        return connection;
+    }
+
+    /**
      * Create HTTP GET connection to the given URL
      *
      * @param url endpoint to create connection
@@ -49,10 +64,40 @@ public class Utils {
      * @throws IOException when URL cannot be parsed
      */
     private static HttpURLConnection getConnection(final String url) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.setRequestMethod("GET");
+        return Utils.connection(url, "GET");
+    }
 
-        return connection;
+    /**
+     * Create HTTP POST connection to the given URL
+     *
+     * @param url endpoint to create connection
+     * @return HttpURLConnection
+     * @throws IOException when URL cannot be parsed
+     */
+    private static HttpURLConnection postConnection(final String url) throws IOException {
+        return Utils.connection(url, "POST");
+    }
+
+    /**
+     * Create HTTP PUT connection to the given URL
+     *
+     * @param url endpoint to create connection
+     * @return HttpURLConnection
+     * @throws IOException when URL cannot be parsed
+     */
+    private static HttpURLConnection putConnection(final String url) throws IOException {
+        return Utils.connection(url, "PUT");
+    }
+
+    /**
+     * Create HTTP DELETE connection to the given URL
+     *
+     * @param url endpoint to create connection
+     * @return HttpURLConnection
+     * @throws IOException when URL cannot be parsed
+     */
+    private static HttpURLConnection deleteConnection(final String url) throws IOException {
+        return Utils.connection(url, "DELETE");
     }
 
     /**
@@ -63,6 +108,33 @@ public class Utils {
      */
     public static HttpURLConnection getSoundConnection(final Map<String, String> query) throws IOException {
         return Utils.getConnection(Utils.constructSoundApiUrl(query));
+    }
+
+    /**
+     * Create HTTP POST connection to the NASA Sound API endpoint
+     *
+     * @return HttpURLConnection
+     */
+    public static HttpURLConnection postSoundConnection(final Map<String, String> query) throws IOException {
+        return Utils.postConnection(Utils.constructSoundApiUrl(query));
+    }
+
+    /**
+     * Create HTTP PUT connection to the NASA Sound API endpoint
+     *
+     * @return HttpURLConnection
+     */
+    public static HttpURLConnection putSoundConnection(final Map<String, String> query) throws IOException {
+        return Utils.putConnection(Utils.constructSoundApiUrl(query));
+    }
+
+    /**
+     * Create HTTP DELETE connection to the NASA Sound API endpoint
+     *
+     * @return HttpURLConnection
+     */
+    public static HttpURLConnection deleteSoundConnection(final Map<String, String> query) throws IOException {
+        return Utils.deleteConnection(Utils.constructSoundApiUrl(query));
     }
 
     /**

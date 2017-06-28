@@ -24,6 +24,18 @@ public class Limit {
     }
 
     @Test(groups = {"standard", "limit"})
+    public void testLimit1() throws IOException {
+        Map<String, String> query = new HashMap<>();
+        query.put("q", "apollo");
+        query.put("api_key", Utils.apiKey);
+        query.put("limit", "1");
+
+        JSONObject response = Utils.getSoundApiResponse(query);
+        Assert.assertEquals(response.getInt("count"), 1);
+        Assert.assertEquals(response.getJSONArray("results").length(), 1);
+    }
+
+    @Test(groups = {"standard", "limit"})
     public void testLimit10() throws IOException {
         Map<String, String> query = new HashMap<>();
         query.put("q", "apollo");
@@ -48,15 +60,15 @@ public class Limit {
     }
 
     @Test(groups = {"standard", "limit"})
-    public void testLimit1() throws IOException {
+    public void testLimit57() throws IOException {
         Map<String, String> query = new HashMap<>();
         query.put("q", "apollo");
         query.put("api_key", Utils.apiKey);
-        query.put("limit", "1");
+        query.put("limit", "57");
 
         JSONObject response = Utils.getSoundApiResponse(query);
-        Assert.assertEquals(response.getInt("count"), 1);
-        Assert.assertEquals(response.getJSONArray("results").length(), 1);
+        Assert.assertEquals(response.getInt("count"), 57);
+        Assert.assertEquals(response.getJSONArray("results").length(), 57);
     }
 
     @Test(groups = {"standard", "limit"})
@@ -72,11 +84,11 @@ public class Limit {
     }
 
     @Test(groups = {"standard", "limit"})
-    public void testLimit100() throws IOException {
+    public void testLimit75() throws IOException {
         Map<String, String> query = new HashMap<>();
         query.put("q", "apollo");
         query.put("api_key", Utils.apiKey);
-        query.put("limit", "100");
+        query.put("limit", "75");
 
         JSONObject response = Utils.getSoundApiResponse(query);
 
