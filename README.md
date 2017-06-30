@@ -8,9 +8,9 @@ Propose API testing testing approach for [NASA Sound API](https://api.nasa.gov/a
 ## Solution
 
 **Test areas:**
- * Standard behavior
-   * Consistency
-   * Search behavior (missing documentation)
+ * [Standard behavior](#standard-behavior)
+   * [Consistency](#consistency-automated)
+   * [Search behavior](#search-behavior) (missing documentation)
    * Limit is working
    * API response structure (missing documentation)
    * API key working correctly
@@ -28,12 +28,12 @@ Propose API testing testing approach for [NASA Sound API](https://api.nasa.gov/a
      * Limit 0
      * Limit negative integer
      * Limit decimal number
-     * Limit bigger then max integer (2147483647)
-     * Limit lower then min integer (-2147483648)
+     * Limit bigger then max integer (2 147 483 647)
+     * Limit lower then min integer (-2 147 483 648)
    * API key testing
      * Empty API key
      * Random API key
-     * API key extremely long (more then 10000 characters)
+     * API key extremely long (more then 10 000 characters)
    * Unexpected parameter
      * Unexpected parameter with string
      * Unexpected parameter with number
@@ -111,8 +111,8 @@ Test limit ability for edge cases
  * Test `limit` param with value which is not number
  * Test `limit` param with 0
  * Test `limit` param with negative integer
- * Test `limit` param with integer larger then max integer (2147483647)
- * Test `limit` param with integer smaller then min integer (-2147483648)
+ * Test `limit` param with integer larger then max integer (2 147 483 647)
+ * Test `limit` param with integer smaller then min integer (-2 147 483 648)
  * Test `limit` param with decimal number
 
 ##### API key testing (`api_key` param) *(automated)*
@@ -157,7 +157,7 @@ Using Java with TestNG test framework
 
 ### 1. **Unexpected `limit` argument**
 
-**Description:** when the `limit` argument in URL is empty, not-a-number, negative number, decimal number, bigger then max integer (2147483647) or smaller then min integer (-2147483648) the server exception is invoked and return code is `500 Server Error`
+**Description:** when the `limit` argument in URL is empty, not-a-number, negative number, decimal number, bigger then max integer (2 147 483 647) or smaller then min integer (-2 147 483 648) the server exception is invoked and return code is `500 Server Error`
 
 **Tested cases:** "", "aa", "agf5", "-5", "-245", "2.45", "8.012", "2147483648", "21474836471", "-2147483649", "-21474836485"
 
