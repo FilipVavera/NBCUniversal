@@ -11,39 +11,20 @@ Propose API testing testing approach for [NASA Sound API](https://api.nasa.gov/a
  * [Standard behavior](#standard-behavior)
    * [Consistency](#consistency-automated)
    * [Search behavior](#search-behavior) (missing documentation)
-   * Limit is working
-   * API response structure (missing documentation)
-   * API key working correctly
- * Edge cases behavior
-   * Search testing
-     * Empty search query
-     * Special characters
-     * Quote characters (", ')
-     * Eval character (`)
-     * Executable code in query
-     * Query extremely long (more then 10000 characters)
-   * Limit testing
-     * Empty limit
-     * Limit not a number
-     * Limit 0
-     * Limit negative integer
-     * Limit decimal number
-     * Limit bigger then max integer (2 147 483 647)
-     * Limit lower then min integer (-2 147 483 648)
-   * API key testing
-     * Empty API key
-     * Random API key
-     * API key extremely long (more then 10 000 characters)
-   * Unexpected parameter
-     * Unexpected parameter with string
-     * Unexpected parameter with number
-     * Unexpected empty parameter
- * Security testing
+   * [Limit is working](#limit-is-working-automated)
+   * [API response structure](#api-response-structure-automated) (missing documentation)
+   * [API key is working](#api-key-is-working)
+ * [Edge cases behavior](#edge-case-behavior-automated)
+   * [Search testing](#search-testing-q-param-automated)
+   * [Limit testing](#limit-testing-limit-param-automated)
+   * [API key testing](#api-key-testing-api_key-param-automated)
+   * [Unexpected parameter](#unexpected-parameter-automated)
+ * [Security testing](#security-testing)
    * SSL certificate testing
    * API key testing (what is his purpose?)
    * Executable code in query
    * ...
- * Load testing
+ * [Load testing](#load-testing)
    * Response time (what is the specification?)
 
 #### Standard behavior
@@ -84,7 +65,7 @@ Test if returned JSON has correct structure. There is no documentation in that f
  * Test if `stream_url` has format `"https://api.soundcloud.com/tracks/{id}/stream"`
  * Test if `last_modified` has format `"%Y/%M/%d %H:%m:%s %Z"`
 
-##### API key working correctly
+##### API key is working
 Test if API key is working correctly.
  * Test if request number 1001 in one hour returns correct response `429 Too many requests` when using normal API key.
  * Test if request number 31 in one hour returns correct response `429 Too many requests` when using DEMO_KEY from one IP address.
@@ -140,10 +121,14 @@ Test API for security
 
 #### Load testing
  * Test API under stress conditions
+   * Difficult to test since there is limit 1000 requests per API key. Testing would require unlimited API key.
+   * I would test it with JMeter. Create bunch of small servers on AWS or Google Cloud Platform and run in them Docker image of JMeter slave server (for example [hhcordero/docker-jmeter-server](https://hub.docker.com/r/hhcordero/docker-jmeter-server/) ). And then run lot of concurrent API requests from all of the servers at once and watch the server load. Then mark and compare with specification:
+     * Standard load (around CPU load at 75%)
+     * Critical load (around CPU load at 90%)
+   * I would also closely look how the system behaves on the height load (request drop, higher response time, inconsistent behavior, ...)
+   * I would also look how the system behaves on 100% and higher load. Does it crash? Is there some auto-scaling implemented? How it behaves? Etc. but this is highly depended on how the system is designed.
  * Test API standard response time
    * This can and should be automated but I have no information about what response time is acceptable.
-
-TODO (Filip Vavera): other test cases
 
 #### Good practices testing
 Test API for good practices
