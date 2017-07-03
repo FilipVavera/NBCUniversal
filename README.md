@@ -23,6 +23,7 @@ Propose API testing testing approach for [NASA Sound API](https://api.nasa.gov/a
    * SSL certificate testing
    * API key testing (what is his purpose?)
    * Executable code in query
+   * SQL injection
    * ...
  * [Load testing](#load-testing)
    * Response time (what is the specification?)
@@ -118,13 +119,14 @@ Test API for security
  * Test all HTTP methods are not accessible except the GET method *(automated)*
  * Test HTTP headers for security issues
  * Test 4xx and 5xx responses returns correct responses (not stack trace or other sensitive information)
+ * SQL injection - SQL query in `q` param
 
 #### Load testing
  * Test API under stress conditions
    * Difficult to test since there is limit 1000 requests per API key. Testing would require unlimited API key.
    * I would test it with JMeter. Create bunch of small servers on AWS or Google Cloud Platform and run in them Docker image of JMeter slave server (for example [hhcordero/docker-jmeter-server](https://hub.docker.com/r/hhcordero/docker-jmeter-server/) ). And then run lot of concurrent API requests from all of the servers at once and watch the server load. Then mark and compare with specification:
      * Standard load (around CPU load at 75%)
-     * Critical load (around CPU load at 90%)
+     * Critical load (around CPU load at 95%)
    * I would also closely look how the system behaves on the height load (request drop, higher response time, inconsistent behavior, ...)
    * I would also look how the system behaves on 100% and higher load. Does it crash? Is there some auto-scaling implemented? How it behaves? Etc. but this is highly depended on how the system is designed.
  * Test API standard response time
